@@ -4,7 +4,7 @@ import { useState } from "react";
 import "./App.css";
 
 function App() {
-  const apiKey = "d68d124bfe565bf5078788ede377b708";
+  const apiKey = ""; //enter your API key
   const [inputCity, setInputCity] = useState("");
   const [data, setData] = useState({});
 
