@@ -4,37 +4,47 @@ import { useState } from "react";
 import "./App.css";
 
 function App() {
-  const apiKey = ""; //enter your API key
-  const [inputCity, setInputCity] = useState("");
-  const [data, setData] = useState({});
+  const apiKey = "d68d124bfe565bf5078788ede377b708"; // API key for OpenWeatherMap
+  const [inputCity, setInputCity] = useState(""); // State for storing the input city name
+  const [data, setData] = useState({}); // State for storing weather data
+
+  // Function to fetch weather details for a given city
 
   const getWetherDetails = (cityName) => {
-    if (!cityName) return;
+    if (!cityName) return; // Return early if the cityName is empty
+
+    // Construct the API URL for fetching weather data.
+
     const apiURL =
       "https://api.openweathermap.org/data/2.5/weather?q=" +
       cityName +
       "&appid=" +
       apiKey;
+
+    // Make a GET request to the OpenWeatherMap API
+
     axios
       .get(apiURL)
       .then((res) => {
         console.log("response", res.data);
-        setData(res.data);
+        setData(res.data); // Update the state with the response data.
       })
       .catch((err) => {
         console.log("err", err);
       });
   };
 
-  
+  // Event handler for input change
 
   const handleChangeInput = (e) => {
-    console.log("value", e.target.value);
-    setInputCity(e.target.value);
+    // console.log("value", e.target.value);
+    setInputCity(e.target.value); // Update the inputCity state with the new value
   };
 
+  // Function handler for search button click
+
   const handleSearch = () => {
-    getWetherDetails(inputCity);
+    getWetherDetails(inputCity); // Call the getWeatherDetails function with the input city.
   };
 
   return (
@@ -59,19 +69,32 @@ function App() {
         </div>
       </div>
 
-      {Object.keys(data).length > 0 && (
-        <div className="col-md-12 text-center mt-5">
-          <div className="shadow rounded wetherResultBox">
-            <img
-              className="weathorIcon"
-              src="https://i.pinimg.com/originals/77/0b/80/770b805d5c99c7931366c2e84e88f251.png"
-              alt=""
-            />
+      {/* Display weather information if data is available */}
 
+      {Object.keys(data).length > 0 && (
+        <div className="col-md-12 text-center mt-4">
+          <div className="shadow rounded wetherResultBox p-5">
             <h5 className="weathorCity">{data?.name}</h5>
-            <h6 className="weathorTemp">
-              {(data?.main?.temp - 273.15).toFixed(2)}°C
-            </h6>
+            <div className="detail mt-4 ">
+              <div className="box">
+                <h6 className="weathorTemp">
+                  {(data?.main?.temp - 273.15).toFixed(2)}°C
+                </h6>
+                <p>Temperature</p>
+              </div>
+              <div className="box">
+                <h6 className="weathorTemp">
+                  {(data?.wind?.speed).toFixed(2)} mph
+                </h6>
+                <p>Wind Speed</p>
+              </div>
+              <div className="box">
+                <h6 className="weathorTemp">
+                  {(data?.main?.humidity).toFixed(2)} %
+                </h6>
+                <p>Humidity</p>
+              </div>
+            </div>
           </div>
         </div>
       )}
