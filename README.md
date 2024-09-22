@@ -15,7 +15,7 @@ To run this project locally, follow these steps:
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/your-username/weather-app.git
+   git clone https://github.com/prabhat63s/weather.git
    cd weather-app
    ```
 
@@ -54,7 +54,7 @@ To run this project locally, follow these steps:
 ## Live Demo
 
 You can test the application online at the following link:
-[Weather Forecast Application](https://your-deployed-link.com)
+[Weather Forecast Application](https://weather-seven-delta-54.vercel.app)
 
 Feel free to reach out if you have any questions or feedback!
 ```

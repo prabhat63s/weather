@@ -5,3 +5,16 @@ body {
   background: linear-gradient(135deg, #6ed9f7, #8dd9f7, #a3d9f7);
   color: #000;
 }
+
+/* For WebKit (Chrome, Safari, newer versions of Opera) */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #ebffff;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #6ed9f7;
+}
